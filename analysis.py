@@ -37,7 +37,7 @@ class analyzer():
             if i not in self.stop and self.punctuation:
                 out+=" "+self.stem.stem(i)
         
-        with open('saved_VV','rb') as file:
+        with open('saved_VV.pkl','rb') as file:
 	        V=self.pickle.load(file)
         transformed=V.transform([out])
         return transformed
@@ -48,7 +48,7 @@ class analyzer():
     def output(self,text):
         self.nb=self.MultinomialNB()
         self.lr=self.LogisticRegression(n_jobs=-1,random_state=32)
-        with open('saved_modell','rb') as f:
+        with open('saved_modell.pkl','rb') as f:
         	stacking=self.pickle.load(f)
         
         out=self.preprocess(text)
